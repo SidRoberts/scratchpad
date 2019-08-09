@@ -1,0 +1,47 @@
+@import "https://fonts.googleapis.com/css?family=Inder&display=swap";
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+body {
+    box-sizing: border-box;
+    display: table;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#icons {
+    display: table-cell;
+    padding: 10px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+#icons button {
+    background: #EEE;
+    border: solid 1px #000;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #C00;
+    display: inline-block;
+    font-size: 2rem;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+#content {
+    background: linear-gradient(to bottom, #EDF, #DEF);
+    display: table-cell;
+    font-family: 'Inder', sans-serif;
+    font-size: 70px;
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+    padding: 1rem;
+    overflow: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: wrap;
+    width: 100%;
+    word-break: break-word;
+}
