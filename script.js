@@ -23,6 +23,11 @@ function getState()
         window.localStorage.getItem('textAlign')
     );
 
+    $('#content').css(
+        'column-count',
+        window.localStorage.getItem('columnCount')
+    );
+
     $('#content').html(
         window.localStorage.getItem('content')
     );
@@ -38,6 +43,11 @@ function saveState()
     window.localStorage.setItem(
         'fontSize',
         $('#content').css('font-size')
+    );
+
+    window.localStorage.setItem(
+        'columnCount',
+        $('#content').css('column-count')
     );
 
     window.localStorage.setItem(
@@ -98,6 +108,27 @@ $('#sizeMinus').on(
     }
 );
 
+$('#columns').on(
+    'click',
+    function () {
+        columnCount = parseInt(
+            $('#content').css('column-count')
+        );
+
+        if (isNaN(columnCount)) {
+            columnCount = 1;
+        }
+
+        columnCount += 1;
+
+        if (columnCount > 3) {
+            columnCount = 1;
+        }
+
+        $('#content').css('column-count', columnCount);
+    }
+);
+
 $('button').on('click', saveState);
 
 $('#reset').on(
@@ -105,6 +136,7 @@ $('#reset').on(
     function () {
         window.localStorage.removeItem('fontSize');
         window.localStorage.removeItem('textAlign');
+        window.localStorage.removeItem('columnCount');
         window.localStorage.removeItem('content');
 
         location.reload();
