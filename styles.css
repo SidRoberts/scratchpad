@@ -44,6 +44,7 @@ body {
 
 #content {
     background: linear-gradient(to bottom, #EDF, #DEF);
+    column-count: 1;
     display: table-cell;
     font-family: 'Inder', sans-serif;
     font-size: 100px;
