@@ -103,7 +103,9 @@ $('button').on('click', saveState);
 $('#reset').on(
     'click',
     function () {
-        window.localStorage.clear();
+        window.localStorage.removeItem('fontSize');
+        window.localStorage.removeItem('textAlign');
+        window.localStorage.removeItem('content');
 
         location.reload();
     }
