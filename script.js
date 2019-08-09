@@ -2,19 +2,44 @@ $(document).ready(
     function () {
         $('#content').focus();
 
-        $('#content').html(
-            window.localStorage.getItem('content')
-        );
+        getState();
     }
 );
 
-$('#content').on('keyup', saveContent);
+$('#content').on('keyup', saveState);
 
-$('#content').on('cut', saveContent);
-$('#content').on('paste', saveContent);
+$('#content').on('cut', saveState);
+$('#content').on('paste', saveState);
 
-function saveContent()
+function getState()
 {
+    $('#content').css(
+        'font-size',
+        window.localStorage.getItem('fontSize')
+    );
+
+    $('#content').css(
+        'text-align',
+        window.localStorage.getItem('textAlign')
+    );
+
+    $('#content').html(
+        window.localStorage.getItem('content')
+    );
+}
+
+function saveState()
+{
+    window.localStorage.setItem(
+        'textAlign',
+        $('#content').css('text-align')
+    );
+
+    window.localStorage.setItem(
+        'fontSize',
+        $('#content').css('font-size')
+    );
+
     window.localStorage.setItem(
         'content',
         $('#content').html()
@@ -70,5 +95,16 @@ $('#sizeMinus').on(
                 return (parseInt($(this).css('font-size')) - 10) + 'px';
             }
         );
+    }
+);
+
+$('button').on('click', saveState);
+
+$('#reset').on(
+    'click',
+    function () {
+        window.localStorage.clear();
+
+        location.reload();
     }
 );
