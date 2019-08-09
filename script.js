@@ -87,7 +87,11 @@ $('#sizePlus').on(
         $('#content').css(
             'font-size',
             function() {
-                return (parseInt($(this).css('font-size')) + 10) + 'px';
+                oldFontSize = parseInt($(this).css('font-size'));
+
+                newFontSize = (oldFontSize + 10);
+
+                return newFontSize + 'px';
             }
         );
     }
@@ -99,7 +103,15 @@ $('#sizeMinus').on(
         $('#content').css(
             'font-size',
             function() {
-                return (parseInt($(this).css('font-size')) - 10) + 'px';
+                oldFontSize = parseInt($(this).css('font-size'));
+
+                newFontSize = (oldFontSize - 10);
+
+                if (newFontSize < 1) {
+                    newFontSize = oldFontSize;
+                }
+
+                return newFontSize + 'px';
             }
         );
     }
