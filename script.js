@@ -6,10 +6,7 @@ $(document).ready(
     }
 );
 
-$('#content').on('keyup', saveState);
-
-$('#content').on('cut', saveState);
-$('#content').on('paste', saveState);
+$('#content').on('keyup cut paste', saveState);
 
 function getState()
 {
