@@ -138,7 +138,7 @@ $('#columns').on(
     }
 );
 
-$('button').on('click', saveState);
+$('button').not('#reset').on('click', saveState);
 
 $('#reset').on(
     'click',
