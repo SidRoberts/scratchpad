@@ -41,6 +41,7 @@ body {
     margin: 0;
     max-width: 100%;
     padding: 1rem;
+    outline: none;
     overflow: none;
     text-align: center;
     vertical-align: middle;
