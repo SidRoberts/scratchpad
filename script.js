@@ -1,8 +1,25 @@
 $(document).ready(
     function () {
         $('#content').focus();
+
+        $('#content').html(
+            window.localStorage.getItem('content')
+        );
     }
 );
+
+$('#content').on('keyup', saveContent);
+
+$('#content').on('cut', saveContent);
+$('#content').on('paste', saveContent);
+
+function saveContent()
+{
+    window.localStorage.setItem(
+        'content',
+        $('#content').html()
+    );
+}
 
 $('#leftAlign').on(
     'click',
