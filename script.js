@@ -70,7 +70,7 @@ $('#rightAlign').on(
 $('#justifyAlign').on(
     'click',
     function () {
-        $('#content').css('text-align', 'justify').css('text-justify', 'inter-word');
+        $('#content').css('text-align', 'justify');
     }
 );
 
