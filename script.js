@@ -1,57 +1,60 @@
+function State()
+{
+    this.get = function () {
+        $('#content').css(
+            'font-size',
+            window.localStorage.getItem('fontSize')
+        );
+
+        $('#content').css(
+            'text-align',
+            window.localStorage.getItem('textAlign')
+        );
+
+        $('#content').css(
+            'column-count',
+            window.localStorage.getItem('columnCount')
+        );
+
+        $('#content').html(
+            window.localStorage.getItem('content')
+        );
+    };
+
+    this.save = function () {
+        window.localStorage.setItem(
+            'textAlign',
+            $('#content').css('text-align')
+        );
+
+        window.localStorage.setItem(
+            'fontSize',
+            $('#content').css('font-size')
+        );
+
+        window.localStorage.setItem(
+            'columnCount',
+            $('#content').css('column-count')
+        );
+
+        window.localStorage.setItem(
+            'content',
+            $('#content').html()
+        );
+    }
+}
+
+var state = new State();
+
 $(document).ready(
     function () {
         $('#content').focus();
 
-        getState();
+        state.get();
     }
 );
 
-$('#content').on('keyup cut paste', saveState);
-
-function getState()
-{
-    $('#content').css(
-        'font-size',
-        window.localStorage.getItem('fontSize')
-    );
-
-    $('#content').css(
-        'text-align',
-        window.localStorage.getItem('textAlign')
-    );
-
-    $('#content').css(
-        'column-count',
-        window.localStorage.getItem('columnCount')
-    );
-
-    $('#content').html(
-        window.localStorage.getItem('content')
-    );
-}
-
-function saveState()
-{
-    window.localStorage.setItem(
-        'textAlign',
-        $('#content').css('text-align')
-    );
-
-    window.localStorage.setItem(
-        'fontSize',
-        $('#content').css('font-size')
-    );
-
-    window.localStorage.setItem(
-        'columnCount',
-        $('#content').css('column-count')
-    );
-
-    window.localStorage.setItem(
-        'content',
-        $('#content').html()
-    );
-}
+$('#content').on('keyup cut paste', state.save);
 
 $('#leftAlign').on(
     'click',
@@ -138,7 +141,7 @@ $('#columns').on(
     }
 );
 
-$('button').not('#reset').on('click', saveState);
+$('button').not('#reset').on('click', state.save);
 
 $('#reset').on(
     'click',
