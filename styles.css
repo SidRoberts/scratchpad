@@ -33,9 +33,9 @@ body {
     box-sizing: border-box;
     color: #C00;
     display: inline-block;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin: 10px 0;
-    padding: 20px;
+    padding: 15px;
 }
 
 #icons hr {
