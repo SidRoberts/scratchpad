@@ -1,156 +1,157 @@
-function State()
-{
-    this.get = function () {
-        $('#content').css(
-            'font-size',
-            window.localStorage.getItem('fontSize')
-        );
+/* global $ */
 
-        $('#content').css(
-            'text-align',
-            window.localStorage.getItem('textAlign')
-        );
+function State () {
+  this.get = function () {
+    $('#content').css(
+      'font-size',
+      window.localStorage.getItem('fontSize')
+    )
 
-        $('#content').css(
-            'column-count',
-            window.localStorage.getItem('columnCount')
-        );
+    $('#content').css(
+      'text-align',
+      window.localStorage.getItem('textAlign')
+    )
 
-        $('#content').html(
-            window.localStorage.getItem('content')
-        );
-    };
+    $('#content').css(
+      'column-count',
+      window.localStorage.getItem('columnCount')
+    )
 
-    this.save = function () {
-        window.localStorage.setItem(
-            'textAlign',
-            $('#content').css('text-align')
-        );
+    $('#content').html(
+      window.localStorage.getItem('content')
+    )
+  }
 
-        window.localStorage.setItem(
-            'fontSize',
-            $('#content').css('font-size')
-        );
+  this.save = function () {
+    window.localStorage.setItem(
+      'textAlign',
+      $('#content').css('text-align')
+    )
 
-        window.localStorage.setItem(
-            'columnCount',
-            $('#content').css('column-count')
-        );
+    window.localStorage.setItem(
+      'fontSize',
+      $('#content').css('font-size')
+    )
 
-        window.localStorage.setItem(
-            'content',
-            $('#content').html()
-        );
-    }
+    window.localStorage.setItem(
+      'columnCount',
+      $('#content').css('column-count')
+    )
+
+    window.localStorage.setItem(
+      'content',
+      $('#content').html()
+    )
+  }
 }
 
-var state = new State();
+var state = new State()
 
 $(document).ready(
-    function () {
-        $('#content').focus();
+  function () {
+    $('#content').focus()
 
-        state.get();
-    }
-);
+    state.get()
+  }
+)
 
-$('#content').on('keyup cut paste', state.save);
+$('#content').on('keyup cut paste', state.save)
 
 $('#leftAlign').on(
-    'click',
-    function () {
-        $('#content').css('text-align', 'left');
-    }
-);
+  'click',
+  function () {
+    $('#content').css('text-align', 'left')
+  }
+)
 
 $('#centerAlign').on(
-    'click',
-    function () {
-        $('#content').css('text-align', 'center');
-    }
-);
+  'click',
+  function () {
+    $('#content').css('text-align', 'center')
+  }
+)
 
 $('#rightAlign').on(
-    'click',
-    function () {
-        $('#content').css('text-align', 'right');
-    }
-);
+  'click',
+  function () {
+    $('#content').css('text-align', 'right')
+  }
+)
 
 $('#justifyAlign').on(
-    'click',
-    function () {
-        $('#content').css('text-align', 'justify');
-    }
-);
+  'click',
+  function () {
+    $('#content').css('text-align', 'justify')
+  }
+)
 
 $('#sizePlus').on(
-    'click',
-    function () {
-        $('#content').css(
-            'font-size',
-            function() {
-                oldFontSize = parseInt($(this).css('font-size'));
+  'click',
+  function () {
+    $('#content').css(
+      'font-size',
+      function () {
+        var oldFontSize = parseInt($(this).css('font-size'))
 
-                newFontSize = (oldFontSize + 10);
+        var newFontSize = (oldFontSize + 10)
 
-                return newFontSize + 'px';
-            }
-        );
-    }
-);
+        return newFontSize + 'px'
+      }
+    )
+  }
+)
 
 $('#sizeMinus').on(
-    'click',
-    function () {
-        $('#content').css(
-            'font-size',
-            function() {
-                oldFontSize = parseInt($(this).css('font-size'));
+  'click',
+  function () {
+    $('#content').css(
+      'font-size',
+      function () {
+        var oldFontSize = parseInt($(this).css('font-size'))
 
-                newFontSize = (oldFontSize - 10);
+        var newFontSize = (oldFontSize - 10)
 
-                if (newFontSize < 1) {
-                    newFontSize = oldFontSize;
-                }
+        if (newFontSize < 1) {
+          newFontSize = oldFontSize
+        }
 
-                return newFontSize + 'px';
-            }
-        );
-    }
-);
+        return newFontSize + 'px'
+      }
+    )
+  }
+)
 
 $('#columns').on(
-    'click',
-    function () {
-        columnCount = parseInt(
-            $('#content').css('column-count')
-        );
+  'click',
+  function () {
+    var columnCount = parseInt(
+      $('#content').css('column-count')
+    )
 
-        if (isNaN(columnCount)) {
-            columnCount = 1;
-        }
-
-        columnCount += 1;
-
-        if (columnCount > 3) {
-            columnCount = 1;
-        }
-
-        $('#content').css('column-count', columnCount);
+    if (isNaN(columnCount)) {
+      columnCount = 1
     }
-);
 
-$('button').not('#reset').on('click', state.save);
+    columnCount += 1
+
+    if (columnCount > 3) {
+      columnCount = 1
+    }
+
+    $('#content').css('column-count', columnCount)
+  }
+)
+
+$('button').not('#reset').on('click', state.save)
 
 $('#reset').on(
-    'click',
-    function () {
-        window.localStorage.removeItem('fontSize');
-        window.localStorage.removeItem('textAlign');
-        window.localStorage.removeItem('columnCount');
-        window.localStorage.removeItem('content');
+  'click',
+  function () {
+    window.localStorage.removeItem('fontSize')
+    window.localStorage.removeItem('textAlign')
+    window.localStorage.removeItem('columnCount')
+    window.localStorage.removeItem('content')
 
-        location.reload();
-    }
-);
+    window.location.reload()
+  }
+)
