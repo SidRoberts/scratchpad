@@ -3,6 +3,6 @@
     "standard": "*"
   },
   "scripts": {
-    "test": "standard"
+    "test": "node_modules/.bin/standard"
   }
 }
