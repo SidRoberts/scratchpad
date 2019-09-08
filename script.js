@@ -142,7 +142,18 @@ $('#columns').on(
   }
 )
 
-$('button').not('#reset').on('click', state.save)
+$('button').not('#fullscreen, #reset').on('click', state.save)
+
+$('#fullscreen').on(
+  'click',
+  function () {
+    if (document.fullscreen) {
+      document.exitFullscreen()
+    } else {
+      document.body.parentElement.requestFullscreen()
+    }
+  }
+)
 
 $('#reset').on(
   'click',
