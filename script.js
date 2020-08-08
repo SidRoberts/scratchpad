@@ -132,11 +132,7 @@ $('#columns').on(
       columnCount = 1
     }
 
-    columnCount += 1
-
-    if (columnCount > 3) {
-      columnCount = 1
-    }
+    columnCount = (columnCount % 3) + 1
 
     $('#content').css('column-count', columnCount)
   }
