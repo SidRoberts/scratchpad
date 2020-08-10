@@ -11,7 +11,11 @@ Digital whiteboard to write notes.
 
 Access via [https://sidroberts.co.uk/scratchpad](https://sidroberts.co.uk/scratchpad).
 
-Alternatively, use the Docker image [`sidroberts/scratchpad`](https://hub.docker.com/repository/docker/sidroberts/scratchpad).
+Alternatively, use the Docker image [`sidroberts/scratchpad`](https://hub.docker.com/repository/docker/sidroberts/scratchpad):
+
+```bash
+docker run -p 80:80 sidroberts/scratchpad
+```
 
 ## License
 
