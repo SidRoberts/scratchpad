@@ -45,7 +45,7 @@ function State () {
   }
 }
 
-let state = new State()
+const state = new State()
 
 $(document).ready(
   function () {
@@ -60,7 +60,7 @@ $('#content').on('keyup cut paste', state.save)
 $('.align-button').on(
   'click',
   function () {
-    let newAlign = $(this).data('align')
+    const newAlign = $(this).data('align')
 
     $('body').removeClass('align-left align-center align-right align-justify')
     $('body').addClass('align-' + newAlign)
@@ -70,12 +70,12 @@ $('.align-button').on(
 $('.size-button').on(
   'click',
   function () {
-    let increment = parseInt($(this).data('increment'))
+    const increment = parseInt($(this).data('increment'))
 
     $('#content').css(
       'font-size',
       function () {
-        let oldFontSize = parseInt($(this).css('font-size'))
+        const oldFontSize = parseInt($(this).css('font-size'))
 
         let newFontSize = (oldFontSize + increment)
 
