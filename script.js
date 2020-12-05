@@ -7,8 +7,8 @@ function State () {
       window.localStorage.getItem('fontSize')
     )
 
-    $('#content').css(
-      'text-align',
+    $('body').attr(
+      'class',
       window.localStorage.getItem('textAlign')
     )
 
@@ -25,7 +25,7 @@ function State () {
   this.save = function () {
     window.localStorage.setItem(
       'textAlign',
-      $('#content').css('text-align')
+      $('body').attr('class')
     )
 
     window.localStorage.setItem(
@@ -57,31 +57,13 @@ $(document).ready(
 
 $('#content').on('keyup cut paste', state.save)
 
-$('#leftAlign').on(
+$('.align-button').on(
   'click',
   function () {
-    $('#content').css('text-align', 'left')
-  }
-)
+    newAlign = $(this).data('align')
 
-$('#centerAlign').on(
-  'click',
-  function () {
-    $('#content').css('text-align', 'center')
-  }
-)
-
-$('#rightAlign').on(
-  'click',
-  function () {
-    $('#content').css('text-align', 'right')
-  }
-)
-
-$('#justifyAlign').on(
-  'click',
-  function () {
-    $('#content').css('text-align', 'justify')
+    $('body').removeClass('align-left align-center align-right align-justify')
+    $('body').addClass('align-' + newAlign)
   }
 )
 
