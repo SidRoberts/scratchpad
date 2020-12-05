@@ -67,31 +67,17 @@ $('.align-button').on(
   }
 )
 
-$('#sizePlus').on(
+$('.size-button').on(
   'click',
   function () {
+    increment = parseInt($(this).data('increment'))
+
     $('#content').css(
       'font-size',
       function () {
         var oldFontSize = parseInt($(this).css('font-size'))
 
-        var newFontSize = (oldFontSize + 10)
-
-        return newFontSize + 'px'
-      }
-    )
-  }
-)
-
-$('#sizeMinus').on(
-  'click',
-  function () {
-    $('#content').css(
-      'font-size',
-      function () {
-        var oldFontSize = parseInt($(this).css('font-size'))
-
-        var newFontSize = (oldFontSize - 10)
+        var newFontSize = (oldFontSize + increment)
 
         if (newFontSize < 1) {
           newFontSize = oldFontSize
