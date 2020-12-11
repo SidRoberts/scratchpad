@@ -8,7 +8,7 @@ RUN npm install
 
 RUN npm test
 
-RUN node_modules/.bin/sass styles.sass > styles.css
+RUN npm run build-css
 
 RUN rm styles.sass
 
