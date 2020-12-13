@@ -10,7 +10,8 @@ RUN npm test
 
 RUN npm run build-css
 
-RUN rm styles.sass
+# Remove development/build files
+RUN rm -rf node_modules/ package.json package-lock.json styles.sass
 
 
 
