@@ -111,7 +111,7 @@ $('button').not('#fullscreen, #reset').on('click', state.save)
 $('#fullscreen').on(
   'click',
   function () {
-    if (document.fullscreen) {
+    if (document.fullscreenElement) {
       document.exitFullscreen()
     } else {
       document.body.parentElement.requestFullscreen()
