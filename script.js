@@ -158,63 +158,63 @@ hotkeys.filter = function (event) {
 }
 
 hotkeys(
-  'ctrl+alt+1',
+  'ctrl+alt+1,command+option+1',
   function (event, handler) {
     changeAlignment('left')
   }
 )
 
 hotkeys(
-  'ctrl+alt+2',
+  'ctrl+alt+2,command+option+2',
   function (event, handler) {
     changeAlignment('center')
   }
 )
 
 hotkeys(
-  'ctrl+alt+3',
+  'ctrl+alt+3,command+option+3',
   function (event, handler) {
     changeAlignment('right')
   }
 )
 
 hotkeys(
-  'ctrl+alt+4',
+  'ctrl+alt+4,command+option+4',
   function (event, handler) {
     changeAlignment('justify')
   }
 )
 
 hotkeys(
-  'ctrl+alt+\\',
+  'ctrl+alt+\\,command+option+\\',
   function (event, handler) {
     iterateColumnCount()
   }
 )
 
 hotkeys(
-  'ctrl+alt+=',
+  'ctrl+alt+=,command+alt+=',
   function (event, handler) {
     incrementFontSize(+10)
   }
 )
 
 hotkeys(
-  'ctrl+alt+-',
+  'ctrl+alt+-,command+option+-',
   function (event, handler) {
     incrementFontSize(-10)
   }
 )
 
 hotkeys(
-  'ctrl+alt+esc',
+  'ctrl+alt+esc,command+option+esc',
   function (event, handler) {
     reset()
   }
 )
 
 hotkeys(
-  'ctrl+alt+/',
+  'ctrl+alt+/,command+option+/',
   function (event, handler) {
     $('#icons').toggle()
   }
