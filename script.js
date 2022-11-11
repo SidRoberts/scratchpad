@@ -1,4 +1,4 @@
-/* global $ */
+/* global $, hotkeys */
 
 function State () {
   this.get = function () {
@@ -57,13 +57,63 @@ $(document).ready(
 
 $('#content').on('keyup cut paste', state.save)
 
+const changeAlignment = function (newAlign) {
+  $('body').removeClass('align-left align-center align-right align-justify')
+  $('body').addClass('align-' + newAlign)
+
+  state.save()
+}
+
+const incrementFontSize = function (increment) {
+  $('#content').css(
+    'font-size',
+    function () {
+      const oldFontSize = parseInt($(this).css('font-size'))
+
+      let newFontSize = (oldFontSize + increment)
+
+      if (newFontSize < 1) {
+        newFontSize = oldFontSize
+      }
+
+      return newFontSize + 'px'
+    }
+  )
+
+  state.save()
+}
+
+const iterateColumnCount = function () {
+  let columnCount = parseInt(
+    $('#content').css('column-count')
+  )
+
+  if (isNaN(columnCount)) {
+    columnCount = 1
+  }
+
+  columnCount = (columnCount % 3) + 1
+
+  $('#content').css('column-count', columnCount)
+
+  state.save()
+}
+
+const reset = function () {
+  window.localStorage.removeItem('fontSize')
+  window.localStorage.removeItem('textAlign')
+  window.localStorage.removeItem('columnCount')
+  window.localStorage.removeItem('content')
+
+  window.location.reload()
+}
+
 $('.align-button').on(
   'click',
   function () {
     const newAlign = $(this).data('align')
 
-    $('body').removeClass('align-left align-center align-right align-justify')
-    $('body').addClass('align-' + newAlign)
+    changeAlignment(newAlign)
   }
 )
 
@@ -72,41 +122,16 @@ $('.size-button').on(
   function () {
     const increment = parseInt($(this).data('increment'))
 
-    $('#content').css(
-      'font-size',
-      function () {
-        const oldFontSize = parseInt($(this).css('font-size'))
-
-        let newFontSize = (oldFontSize + increment)
-
-        if (newFontSize < 1) {
-          newFontSize = oldFontSize
-        }
-
-        return newFontSize + 'px'
-      }
-    )
+    incrementFontSize(increment)
   }
 )
 
 $('#columns').on(
   'click',
   function () {
-    let columnCount = parseInt(
-      $('#content').css('column-count')
-    )
-
-    if (isNaN(columnCount)) {
-      columnCount = 1
-    }
-
-    columnCount = (columnCount % 3) + 1
-
-    $('#content').css('column-count', columnCount)
+    iterateColumnCount()
   }
 )
-
-$('button').not('#fullscreen, #reset').on('click', state.save)
 
 $('#fullscreen').on(
   'click',
@@ -122,11 +147,75 @@ $('#fullscreen').on(
 $('#reset').on(
   'click',
   function () {
-    window.localStorage.removeItem('fontSize')
-    window.localStorage.removeItem('textAlign')
-    window.localStorage.removeItem('columnCount')
-    window.localStorage.removeItem('content')
+    reset()
+  }
+)
 
-    window.location.reload()
+hotkeys.filter = function (event) {
+  const tagName = (event.target || event.srcElement).tagName
+
+  return !(tagName.isContentEditable || tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA')
+}
+
+hotkeys(
+  'ctrl+alt+1',
+  function (event, handler) {
+    changeAlignment('left')
+  }
+)
+
+hotkeys(
+  'ctrl+alt+2',
+  function (event, handler) {
+    changeAlignment('center')
+  }
+)
+
+hotkeys(
+  'ctrl+alt+3',
+  function (event, handler) {
+    changeAlignment('right')
+  }
+)
+
+hotkeys(
+  'ctrl+alt+4',
+  function (event, handler) {
+    changeAlignment('justify')
+  }
+)
+
+hotkeys(
+  'ctrl+alt+\\',
+  function (event, handler) {
+    iterateColumnCount()
+  }
+)
+
+hotkeys(
+  'ctrl+alt+=',
+  function (event, handler) {
+    incrementFontSize(+10)
+  }
+)
+
+hotkeys(
+  'ctrl+alt+-',
+  function (event, handler) {
+    incrementFontSize(-10)
+  }
+)
+
+hotkeys(
+  'ctrl+alt+esc',
+  function (event, handler) {
+    reset()
+  }
+)
+
+hotkeys(
+  'ctrl+alt+/',
+  function (event, handler) {
+    $('#icons').toggle()
   }
 )

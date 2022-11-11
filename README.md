@@ -19,6 +19,20 @@ Alternatively, use the Docker image [`sidroberts/scratchpad`](https://hub.docker
 docker run -p 80:80 sidroberts/scratchpad
 ```
 
+### Keyboard Shortcuts
+
+| Shortcut     | Action                   |
+|--------------|--------------------------|
+| Ctrl Alt 1   | Left text alignment      |
+| Ctrl Alt 2   | Centre text alignment    |
+| Ctrl Alt 3   | Right text alignment     |
+| Ctrl Alt 4   | Justified text alignment |
+| Ctrl Alt |   | Iterate column count     |
+| Ctrl Alt +   | Increase font size       |
+| Ctrl Alt -   | Decrease font size       |
+| Ctrl Alt Esc | Reset                    |
+| Ctrl Alt /   | Toggle icons             |
+
 ## License
 
 Licensed under the MIT License.
