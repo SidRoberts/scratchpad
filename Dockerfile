@@ -17,6 +17,6 @@ RUN rm -rf node_modules/ package.json package-lock.json styles.sass
 
 
 
-FROM nginx:1-alpine
+FROM nginx:1-alpine-slim
 
 COPY --from=builder /app/ /usr/share/nginx/html/
