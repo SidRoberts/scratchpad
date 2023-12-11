@@ -7,10 +7,12 @@ function State () {
       window.localStorage.getItem('fontSize')
     )
 
-    $('body').attr(
-      'class',
-      window.localStorage.getItem('textAlign')
-    )
+    if (window.localStorage.getItem('textAlign')) {
+      $('body').attr(
+        'class',
+        window.localStorage.getItem('textAlign')
+      )
+    }
 
     if (window.localStorage.getItem('darkMode')) {
       $('body').addClass('dark-mode')
