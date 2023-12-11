@@ -30,7 +30,20 @@ body
     @media print
         display: none
 
-    button
+    .nav-start, .nav-end
+        display: flex
+
+    .nav-start
+        flex-grow: 1
+
+    .button-group
+        display:      flex
+        margin-right: 4rem
+
+        &:last-child
+            margin-right: 0
+
+    button, a
         background: none
         border:     none
         color:      #FFF
