@@ -12,6 +12,10 @@ function State () {
       window.localStorage.getItem('textAlign')
     )
 
+    if (window.localStorage.getItem('darkMode')) {
+      $('body').addClass('dark-mode')
+    }
+
     $('#content').css(
       'column-count',
       window.localStorage.getItem('columnCount')
@@ -27,6 +31,15 @@ function State () {
       'textAlign',
       $('body').attr('class')
     )
+
+    window.localStorage.removeItem('darkMode')
+
+    if ($('body').hasClass('dark-mode')) {
+      window.localStorage.setItem(
+        'darkMode',
+        true
+      )
+    }
 
     window.localStorage.setItem(
       'fontSize',
@@ -99,9 +112,16 @@ const iterateColumnCount = function () {
   state.save()
 }
 
+const toggleDarkMode = function () {
+  $('body').toggleClass('dark-mode')
+
+  state.save()
+}
+
 const reset = function () {
   window.localStorage.removeItem('fontSize')
   window.localStorage.removeItem('textAlign')
+  window.localStorage.removeItem('darkMode')
   window.localStorage.removeItem('columnCount')
   window.localStorage.removeItem('content')
 
@@ -141,6 +161,13 @@ $('#fullscreen').on(
     } else {
       document.body.parentElement.requestFullscreen()
     }
+  }
+)
+
+$('#darkMode').on(
+  'click',
+  function () {
+    toggleDarkMode()
   }
 )
 
