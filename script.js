@@ -178,6 +178,13 @@ $('#reset').on(
   }
 )
 
+$('main').on(
+  'click',
+  function () {
+    $('#content').focus()
+  }
+)
+
 hotkeys.filter = function (event) {
   const tagName = (event.target || event.srcElement).tagName
 
