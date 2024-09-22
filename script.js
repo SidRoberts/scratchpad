@@ -1,7 +1,7 @@
 /* global $, hotkeys */
 
-function State () {
-  this.get = function () {
+class State {
+  static get () {
     $('#content').css(
       'font-size',
       window.localStorage.getItem('fontSize')
@@ -28,7 +28,7 @@ function State () {
     )
   }
 
-  this.save = function () {
+  static save () {
     window.localStorage.setItem(
       'textAlign',
       $('body').attr('class')
@@ -60,23 +60,21 @@ function State () {
   }
 }
 
-const state = new State()
-
 $(document).ready(
   function () {
     $('#content').focus()
 
-    state.get()
+    State.get()
   }
 )
 
-$('#content').on('keyup cut paste', state.save)
+$('#content').on('keyup cut paste', State.save)
 
 const changeAlignment = function (newAlign) {
   $('body').removeClass('align-left align-center align-right align-justify')
   $('body').addClass('align-' + newAlign)
 
-  state.save()
+  State.save()
 }
 
 const incrementFontSize = function (increment) {
@@ -95,7 +93,7 @@ const incrementFontSize = function (increment) {
     }
   )
 
-  state.save()
+  State.save()
 }
 
 const iterateColumnCount = function () {
@@ -111,13 +109,13 @@ const iterateColumnCount = function () {
 
   $('#content').css('column-count', columnCount)
 
-  state.save()
+  State.save()
 }
 
 const toggleDarkMode = function () {
   $('body').toggleClass('dark-mode')
 
-  state.save()
+  State.save()
 }
 
 const reset = function () {
