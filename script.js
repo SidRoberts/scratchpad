@@ -58,6 +58,16 @@ class State {
       $('#content').html()
     )
   }
+
+  static reset () {
+    window.localStorage.removeItem('fontSize')
+    window.localStorage.removeItem('textAlign')
+    window.localStorage.removeItem('darkMode')
+    window.localStorage.removeItem('columnCount')
+    window.localStorage.removeItem('content')
+
+    window.location.reload()
+  }
 }
 
 $(document).ready(
@@ -118,16 +128,6 @@ const toggleDarkMode = function () {
   State.save()
 }
 
-const reset = function () {
-  window.localStorage.removeItem('fontSize')
-  window.localStorage.removeItem('textAlign')
-  window.localStorage.removeItem('darkMode')
-  window.localStorage.removeItem('columnCount')
-  window.localStorage.removeItem('content')
-
-  window.location.reload()
-}
-
 $('.align-button').on(
   'click',
   function () {
@@ -174,7 +174,7 @@ $('#darkMode').on(
 $('#reset').on(
   'click',
   function () {
-    reset()
+    State.reset()
   }
 )
 
@@ -243,7 +243,7 @@ hotkeys(
 hotkeys(
   'ctrl+alt+esc,command+option+esc',
   function (event, handler) {
-    reset()
+    State.reset()
   }
 )
 
