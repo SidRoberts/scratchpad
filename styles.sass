@@ -3,6 +3,16 @@
 
 @import "https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
 
+$black:  #1F1F1F
+$white:  #ECEFF4
+$red:    #E92929
+$orange: #E76B23
+$yellow: #F2D34B
+$green:  #14A647
+$blue:   #049DD9
+$purple: #873ACF
+$pink:   #E58CFC
+
 *
     box-sizing: border-box
 
@@ -10,7 +20,7 @@ html
     height: 100%
 
 body
-    background:            linear-gradient(to right, #FCF9F6, #FFFFFF)
+    background:            $white
     display:               flex
     flex-direction:        column
     height:                100%
@@ -20,11 +30,11 @@ body
     width:                 100%
 
     &.dark-mode
-        background: #000
-        color:      #FFF
+        background: $black
+        color:      $white
 
 body > header > nav
-    background: linear-gradient(to right, #512DA8, #673AB7)
+    background: $purple
     display:    flex
 
     @media print
@@ -46,7 +56,7 @@ body > header > nav
     button, a
         background: none
         border:     none
-        color:      #FFF
+        color:      $white
         cursor:     pointer
         display:    inline-block
         font-size:  1rem
@@ -54,7 +64,7 @@ body > header > nav
         padding:    1rem
 
         &:focus, &:hover, &:active
-            background: linear-gradient(to right, #DC281E, #F00000)
+            background: $red
 
     hr
         border: none
@@ -68,7 +78,7 @@ main
 
 #content
     column-count:   1
-    column-rule:    solid 5px #512DA8
+    column-rule:    solid 5px $purple
     font-family:    "Patrick Hand", sans-serif
     font-size:      100px
     margin:         0
@@ -85,25 +95,25 @@ body.align-start
         text-align: start
 
     #startAlign
-        background: #000
+        background: $black
 
 body.align-center
     #content
         text-align: center
 
     #centerAlign
-        background: #000
+        background: $black
 
 body.align-end
     #content
         text-align: end
 
     #endAlign
-        background: #000
+        background: $black
 
 body.align-justify
     #content
         text-align: justify
 
     #justifyAlign
-        background: #000
+        background: $black
