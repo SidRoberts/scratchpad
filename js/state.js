@@ -1,3 +1,5 @@
+/* global $ */
+
 export default class State {
   static get () {
     $('#content').css(
