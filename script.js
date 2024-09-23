@@ -182,6 +182,6 @@ hotkeys(
 hotkeys(
   'ctrl+alt+/,command+option+/',
   function (event, handler) {
-    $('#icons').toggle()
+    $('body > header').toggle()
   }
 )
