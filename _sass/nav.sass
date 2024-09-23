@@ -1,0 +1,36 @@
+body > header
+    background-color: $purple
+
+    @media print
+        display: none
+
+    nav
+        display: flex
+
+        .nav-start, .nav-end
+            display:        flex
+            flex-direction: row
+            flex-wrap:      wrap
+
+        .nav-start
+            flex-grow: 1
+
+        .button-group
+            display:      flex
+            margin-right: 2rem
+
+            &:last-child
+                margin-right: 0
+
+        button, a
+            background: none
+            border:     none
+            color:      $white
+            cursor:     pointer
+            display:    inline-block
+            font-size:  1rem
+            outline:    none
+            padding:    1rem
+
+            &:focus, &:hover, &:active
+                background-color: $red
