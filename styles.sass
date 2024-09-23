@@ -70,6 +70,11 @@ main
     flex-grow:       1
     justify-content: center
 
+    @media print
+        align-items:     start
+        justify-content: start
+        padding:         0
+
 #content
     column-count:   1
     column-gap:     calc($spacing-md * 2)
