@@ -13,6 +13,10 @@ $blue:   #049DD9
 $purple: #873ACF
 $pink:   #E58CFC
 
+$spacing-sm: 1rem
+$spacing-md: 2rem
+$spacing-lg: 4rem
+
 *
     box-sizing: border-box
 
@@ -48,7 +52,7 @@ body > header > nav
 
     .button-group
         display:      flex
-        margin-right: 4rem
+        margin-right: $spacing-lg
 
         &:last-child
             margin-right: 0
@@ -61,7 +65,7 @@ body > header > nav
         display:    inline-block
         font-size:  1rem
         outline:    none
-        padding:    1rem
+        padding:    $spacing-sm
 
         &:focus, &:hover, &:active
             background: $red
@@ -82,7 +86,7 @@ main
     font-family:    "Urbanist", sans-serif
     font-size:      100px
     margin:         0
-    padding:        1rem
+    padding:        $spacing-sm
     outline:        none
     overflow:       none
     vertical-align: middle
