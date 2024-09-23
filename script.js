@@ -13,7 +13,7 @@ $(document).ready(
 $('#content').on('keyup cut paste', State.save)
 
 const changeAlignment = function (newAlign) {
-  $('body').removeClass('align-left align-center align-right align-justify')
+  $('body').removeClass('align-start align-center align-end align-justify')
   $('body').addClass('align-' + newAlign)
 
   State.save()
@@ -126,7 +126,7 @@ hotkeys.filter = function (event) {
 hotkeys(
   'ctrl+alt+1,command+option+1',
   function (event, handler) {
-    changeAlignment('left')
+    changeAlignment('start')
   }
 )
 
@@ -140,7 +140,7 @@ hotkeys(
 hotkeys(
   'ctrl+alt+3,command+option+3',
   function (event, handler) {
-    changeAlignment('right')
+    changeAlignment('end')
   }
 )
 
