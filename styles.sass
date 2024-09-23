@@ -13,6 +13,8 @@ $blue:   #049DD9
 $purple: #873ACF
 $pink:   #E58CFC
 
+$page-width: 75rem
+
 $spacing-sm: 1rem
 $spacing-md: 2rem
 $spacing-lg: 4rem
@@ -41,41 +43,25 @@ body
             background-color: $black
             color:            $white
 
-body > header > nav
-    background: $purple
-    display:    flex
+    & > header, & > main
+        padding: 0 $spacing-md
 
-    @media print
-        display: none
+        @media (min-width: $page-width)
+            display:               grid
+            grid-template-columns: 1fr [content-start] ($page-width - $spacing-md - $spacing-md) [content-end] 1fr
 
-    .nav-start, .nav-end
-        display: flex
+        @media print
+            background:    none
+            padding-left:  0
+            padding-right: 0
 
-    .nav-start
-        flex-grow: 1
+        & > *
+            grid-column: content
 
-    .button-group
-        display:      flex
-        margin-right: $spacing-lg
+    & > main
+        padding: $spacing-md
 
-        &:last-child
-            margin-right: 0
-
-    button, a
-        background: none
-        border:     none
-        color:      $white
-        cursor:     pointer
-        display:    inline-block
-        font-size:  1rem
-        outline:    none
-        padding:    $spacing-sm
-
-        &:focus, &:hover, &:active
-            background: $red
-
-    hr
-        border: none
+@import "_sass/nav"
 
 main
     align-items:     center
@@ -91,7 +77,6 @@ main
     font-family:    "Urbanist", sans-serif
     font-size:      100px
     margin:         0
-    padding:        $spacing-sm
     outline:        none
     overflow:       none
     vertical-align: middle
