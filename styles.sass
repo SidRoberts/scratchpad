@@ -24,7 +24,6 @@ html
     height: 100%
 
 body
-    background:            $white
     display:               flex
     flex-direction:        column
     height:                100%
@@ -33,9 +32,13 @@ body
     padding:               0
     width:                 100%
 
+    @media screen
+        background-color: $white
+
     &.dark-mode
-        background: $black
-        color:      $white
+        @media screen
+            background-color: $black
+            color:            $white
 
 body > header > nav
     background: $purple
