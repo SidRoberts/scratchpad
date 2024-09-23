@@ -1,0 +1,15 @@
+@mixin vertical-spacing($amount)
+    margin-top:    $amount
+    margin-bottom: $amount
+
+    &:first-child
+        margin-top: 0
+
+    &:last-child
+        margin-bottom: 0
+
+.vertical-spacing-sm
+    @include vertical-spacing($spacing-sm)
+
+.vertical-spacing-md
+    @include vertical-spacing($spacing-md)
