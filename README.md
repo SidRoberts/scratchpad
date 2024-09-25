@@ -32,6 +32,8 @@ docker run -p 80:80 sidroberts/scratchpad
 | Ctrl Alt -       | Command Option -   | Decrease font size       |
 | Ctrl Alt Esc     | Command Option Esc | Reset                    |
 | Ctrl Alt /       | Command Option /   | Toggle icons             |
+| Ctrl Alt \[      | Command Option \[  | Move block up            |
+| Ctrl Alt \]      | Command Option \]  | Move block down          |
 
 ### Block Formatting Shortcuts
 

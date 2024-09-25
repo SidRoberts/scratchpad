@@ -182,6 +182,54 @@ hotkeys(
 )
 
 hotkeys(
+  'ctrl+alt+[,command+option+[',
+  function (event, handler) {
+    console.log('dasd')
+    const block = (event.target || event.srcElement)
+
+    const cursorPosition = Cursor.getPosition(block)
+
+    if (cursorPosition === -1) {
+      return true
+    }
+
+    const previousBlock = block.previousElementSibling
+
+    if (!previousBlock) {
+      return true
+    }
+
+    $(block).after(previousBlock)
+
+    return false
+  }
+)
+
+hotkeys(
+  'ctrl+alt+],command+option+]',
+  function (event, handler) {
+    console.log('dasd')
+    const block = (event.target || event.srcElement)
+
+    const cursorPosition = Cursor.getPosition(block)
+
+    if (cursorPosition === -1) {
+      return true
+    }
+
+    const nextBlock = block.nextElementSibling
+
+    if (!nextBlock) {
+      return true
+    }
+
+    $(block).before(nextBlock)
+
+    return false
+  }
+)
+
+hotkeys(
   'up,left',
   function (event, handler) {
     const block = (event.target || event.srcElement)
