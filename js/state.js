@@ -1,5 +1,7 @@
 /* global $ */
 
+import Blocks from './blocks.js'
+
 export default class State {
   static get () {
     $('#content').css(
@@ -24,8 +26,10 @@ export default class State {
     )
 
     $('#content').html(
-      window.localStorage.getItem('content')
+      window.localStorage.getItem('content') || '<text contenteditable="plaintext-only"></text>'
     )
+
+    Blocks.focusOnLastBlock()
   }
 
   static save () {

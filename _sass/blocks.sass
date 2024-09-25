@@ -1,0 +1,73 @@
+@mixin box($colour)
+    background-color: $colour
+    color:            $black // for dark mode
+    padding:          2rem
+
+    @media print
+        border: solid 5px $colour
+
+#content
+    @media screen
+        padding-top: $spacing-md
+
+    & > *
+        break-inside:  avoid // for printing and columns
+        border-radius: 10px
+        cursor:        text
+        display:       block
+        margin-bottom: $spacing-md
+        outline:       none
+
+    // TEXT ////////////////////////////////////////////////////////////////////
+
+    @each $word, $colour in $colour-variations
+        #{"text-" + $word}
+            color: $colour
+
+    text-rainbow
+        &, &:after
+            background-clip:  text
+            background-image: $rainbow-gradient
+            color:            transparent
+            caret-color:      $black
+
+    // BOXES ///////////////////////////////////////////////////////////////////
+
+    @each $word, $colour in $colour-variations
+        #{"box-" + $word}
+            @include box($colour)
+
+    box-rainbow
+        @include box($red)
+
+        background: $rainbow-gradient
+
+        @media print
+            border-image:       $rainbow-gradient 1
+            border-image-width: 5px
+
+    // CODE ////////////////////////////////////////////////////////////////////
+
+    pre
+        font-family:  "Fira Code", monospace
+        font-weight:  300
+        margin-block: 1em
+        overflow:     auto
+        white-space:  pre-wrap
+
+    // LISTS ///////////////////////////////////////////////////////////////////
+
+    li
+        display:      list-item !important
+        margin-left:  ($spacing-md + 1rem)
+        padding-left: 1rem
+
+    // DELETED TEXT ////////////////////////////////////////////////////////////
+
+    del
+        color:                     $red
+        display:                   block
+        text-decoration-thickness: 5px
+
+        &:empty
+            text-decoration: none

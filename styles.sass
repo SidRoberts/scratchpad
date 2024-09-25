@@ -3,6 +3,8 @@
 
 @import "https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
 
+@import "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
+
 $black:  #1F1F1F
 $white:  #ECEFF4
 $red:    #E92929
@@ -19,7 +21,9 @@ $spacing-sm: 1rem
 $spacing-md: 2rem
 $spacing-lg: 4rem
 
-@import "_sass/vertical-spacing"
+$colour-variations: "red" $red, "orange" $orange, "yellow" $yellow, "green" $green, "blue" $blue, "purple" $purple, "pink" $pink
+
+$rainbow-gradient: linear-gradient(90deg, $red 0%, $orange 17%, $yellow 34%, $green 50%, $blue 67%, $purple 84%, $pink 100%)
 
 *
     box-sizing: border-box
@@ -58,8 +62,6 @@ body
         & > *
             grid-column: content
 
-    & > main
-        padding: $spacing-md
 
 @import "_sass/nav"
 
@@ -69,25 +71,25 @@ main
     cursor:          text
     flex-grow:       1
     justify-content: center
+    padding:         0 $spacing-md
 
     @media print
         align-items:     start
         justify-content: start
         padding:         0
 
-#content
-    column-count:   1
-    column-gap:     calc($spacing-md * 2)
-    column-rule:    solid 5px $purple
-    font-family:    "Urbanist", sans-serif
-    font-size:      100px
-    margin:         0
-    outline:        none
-    overflow:       none
-    vertical-align: middle
-    white-space:    wrap
-    width:          100%
-    word-break:     break-word
+    #content
+        column-count:   1
+        column-gap:     calc($spacing-md * 2)
+        column-rule:    solid 5px $purple
+        font-family:    "Urbanist", sans-serif
+        font-size:      100px
+        margin:         0
+        overflow:       none
+        vertical-align: middle
+        white-space:    wrap
+        width:          100%
+        word-break:     break-word
 
 body.align-start
     #content
@@ -116,3 +118,5 @@ body.align-justify
 
     #justifyAlign
         background: $black
+
+@import "_sass/blocks"

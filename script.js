@@ -1,11 +1,13 @@
 /* global $, hotkeys */
 
+import Cursor from './js/cursor.js'
+
 import State from './js/state.js'
+
+import Blocks from './js/blocks.js'
 
 $(document).ready(
   function () {
-    $('#content').focus()
-
     State.get()
   }
 )
@@ -110,13 +112,6 @@ $('#reset').on(
   }
 )
 
-$('main').on(
-  'click',
-  function () {
-    $('#content').focus()
-  }
-)
-
 hotkeys.filter = function (event) {
   const tagName = (event.target || event.srcElement).tagName
 
@@ -183,5 +178,153 @@ hotkeys(
   'ctrl+alt+/,command+option+/',
   function (event, handler) {
     $('body > header').toggle()
+  }
+)
+
+hotkeys(
+  'up,left',
+  function (event, handler) {
+    const block = (event.target || event.srcElement)
+
+    const cursorPosition = Cursor.getPosition(block)
+
+    if (cursorPosition === -1) {
+      return true
+    }
+
+    if (cursorPosition.focus > 0) {
+      return true
+    }
+
+    const previousBlock = block.previousElementSibling
+
+    if (!previousBlock) {
+      return true
+    }
+
+    Blocks.focusBlock(previousBlock, -1)
+
+    return false
+  }
+)
+
+hotkeys(
+  'down,right',
+  function (event, handler) {
+    const block = (event.target || event.srcElement)
+
+    const cursorPosition = Cursor.getPosition(block)
+
+    if (cursorPosition === -1) {
+      return true
+    }
+
+    if (cursorPosition.focus < block.textContent.trimEnd('\n').length) {
+      return true
+    }
+
+    const nextBlock = block.nextElementSibling
+
+    if (!nextBlock) {
+      return true
+    }
+
+    Cursor.setPosition(nextBlock, 0, 0)
+
+    return false
+  }
+)
+
+hotkeys(
+  'enter',
+  function (event, handler) {
+    const block = (event.target || event.srcElement)
+
+    const cursorPosition = Cursor.getPosition(block)
+
+    if (cursorPosition === -1) {
+      return true
+    }
+
+    const keepInThisBlock = block.textContent.substring(0, cursorPosition.min)
+    const moveToNextBlock = block.textContent.substring(cursorPosition.max)
+
+    const newBlockTag = (block.tagName === 'LI') ? 'li' : 'text'
+
+    let nextBlock = Blocks.makeNewBlock(newBlockTag)
+
+    $(block).after(nextBlock)
+
+    block.textContent = keepInThisBlock
+    nextBlock.textContent = moveToNextBlock
+
+    nextBlock = Blocks.applyBlockFormatter(nextBlock)
+
+    Cursor.setPosition(nextBlock, 0, 0)
+
+    return false
+  }
+)
+
+hotkeys(
+  'backspace',
+  function (event, handler) {
+    let block = (event.target || event.srcElement)
+
+    const cursorPosition = Cursor.getPosition(block)
+
+    if (cursorPosition === -1) {
+      return true
+    }
+
+    if (cursorPosition.base !== cursorPosition.focus) {
+      return true
+    }
+
+    if (cursorPosition.focus > 0) {
+      return true
+    }
+
+    if (block.tagName !== 'TEXT') {
+      block = Blocks.replaceBlock(block, 'text')
+
+      Cursor.setPosition(block, 0, 0)
+
+      return false
+    }
+
+    const previousBlock = block.previousElementSibling
+
+    if (!previousBlock) {
+      const nextBlock = block.nextElementSibling
+
+      if (nextBlock && block.textContent.length === 0) {
+        block.parentNode.removeChild(block)
+
+        Cursor.setPosition(nextBlock, 0, 0)
+
+        return false
+      }
+
+      return true
+    }
+
+    const offset = previousBlock.textContent.length
+
+    previousBlock.textContent += block.textContent
+
+    Cursor.setPosition(previousBlock, offset, offset)
+
+    block.parentNode.removeChild(block)
+
+    return false
+  }
+)
+
+$('main').on(
+  'input',
+  '*[contenteditable]',
+  function () {
+    Blocks.applyBlockFormatter(this)
   }
 )
