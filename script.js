@@ -369,6 +369,53 @@ hotkeys(
   }
 )
 
+hotkeys(
+  'delete',
+  function (event, handler) {
+    const block = (event.target || event.srcElement)
+
+    const cursorPosition = Cursor.getPosition(block)
+
+    if (cursorPosition === -1) {
+      return true
+    }
+
+    if (cursorPosition.base !== cursorPosition.focus) {
+      return true
+    }
+
+    if (cursorPosition.focus < block.textContent.length) {
+      return true
+    }
+
+    const nextBlock = block.nextElementSibling
+
+    if (!nextBlock) {
+      const previousBlock = block.previousElementSibling
+
+      if (previousBlock && block.textContent.length === 0) {
+        block.parentNode.removeChild(block)
+
+        Cursor.setPosition(previousBlock, -1, -1)
+
+        return false
+      }
+
+      return true
+    }
+
+    const offset = block.textContent.length
+
+    block.textContent += nextBlock.textContent
+
+    Cursor.setPosition(block, offset, offset)
+
+    nextBlock.parentNode.removeChild(nextBlock)
+
+    return false
+  }
+)
+
 $('main').on(
   'input',
   '*[contenteditable]',
