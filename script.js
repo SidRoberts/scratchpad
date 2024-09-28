@@ -184,7 +184,6 @@ hotkeys(
 hotkeys(
   'ctrl+alt+[,command+option+[',
   function (event, handler) {
-    console.log('dasd')
     const block = (event.target || event.srcElement)
 
     const cursorPosition = Cursor.getPosition(block)
@@ -208,7 +207,6 @@ hotkeys(
 hotkeys(
   'ctrl+alt+],command+option+]',
   function (event, handler) {
-    console.log('dasd')
     const block = (event.target || event.srcElement)
 
     const cursorPosition = Cursor.getPosition(block)
