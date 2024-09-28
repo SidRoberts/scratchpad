@@ -43,6 +43,7 @@ export default class Cursor {
 
     // An empty parent will have no text nodes. :(
     if (parentNode.textContent.length === 0 && baseOffset === 0 && focusOffset === 0) {
+      parentNode.focus()
       selection.setBaseAndExtent(parentNode, 0, parentNode, 0)
     }
 
@@ -56,6 +57,7 @@ export default class Cursor {
     baseOffset -= Cursor._charactersBeforeFocusNodeCount(parentNode, baseNode)
     focusOffset -= Cursor._charactersBeforeFocusNodeCount(parentNode, focusNode)
 
+    focusNode.parentElement.focus()
     selection.setBaseAndExtent(baseNode, baseOffset, focusNode, focusOffset)
   }
 
