@@ -183,6 +183,9 @@ hotkeys(
 
 hotkeys(
   'ctrl+alt+[,command+option+[',
+  {
+    element: document.getElementById('content')
+  },
   function (event, handler) {
     const block = (event.target || event.srcElement)
 
@@ -206,6 +209,9 @@ hotkeys(
 
 hotkeys(
   'ctrl+alt+],command+option+]',
+  {
+    element: document.getElementById('content')
+  },
   function (event, handler) {
     const block = (event.target || event.srcElement)
 
@@ -229,6 +235,9 @@ hotkeys(
 
 hotkeys(
   'up,left',
+  {
+    element: document.getElementById('content')
+  },
   function (event, handler) {
     const block = (event.target || event.srcElement)
 
@@ -256,6 +265,9 @@ hotkeys(
 
 hotkeys(
   'down,right',
+  {
+    element: document.getElementById('content')
+  },
   function (event, handler) {
     const block = (event.target || event.srcElement)
 
@@ -283,6 +295,9 @@ hotkeys(
 
 hotkeys(
   'enter',
+  {
+    element: document.getElementById('content')
+  },
   function (event, handler) {
     const block = (event.target || event.srcElement)
 
@@ -314,6 +329,9 @@ hotkeys(
 
 hotkeys(
   'backspace',
+  {
+    element: document.getElementById('content')
+  },
   function (event, handler) {
     let block = (event.target || event.srcElement)
 
@@ -369,6 +387,9 @@ hotkeys(
 
 hotkeys(
   'delete',
+  {
+    element: document.getElementById('content')
+  },
   function (event, handler) {
     const block = (event.target || event.srcElement)
 
