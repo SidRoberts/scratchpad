@@ -310,9 +310,11 @@ hotkeys(
     const keepInThisBlock = block.textContent.substring(0, cursorPosition.min)
     const moveToNextBlock = block.textContent.substring(cursorPosition.max)
 
-    const newBlockTag = (block.tagName === 'LI') ? 'li' : 'text'
+    let nextBlock = Blocks.makeNewBlock()
 
-    let nextBlock = Blocks.makeNewBlock(newBlockTag)
+    if (block.getAttribute('data-style') === 'list') {
+      nextBlock.setAttribute('data-style', 'list')
+    }
 
     $(block).after(nextBlock)
 
@@ -333,7 +335,7 @@ hotkeys(
     element: document.getElementById('content')
   },
   function (event, handler) {
-    let block = (event.target || event.srcElement)
+    const block = (event.target || event.srcElement)
 
     const cursorPosition = Cursor.getPosition(block)
 
@@ -349,10 +351,8 @@ hotkeys(
       return true
     }
 
-    if (block.tagName !== 'TEXT') {
-      block = Blocks.replaceBlock(block, 'text')
-
-      Cursor.setPosition(block, 0, 0)
+    if (block.getAttribute('data-style') === 'list') {
+      block.setAttribute('data-style', '')
 
       return false
     }

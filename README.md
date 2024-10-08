@@ -37,31 +37,31 @@ docker run -p 80:80 sidroberts/scratchpad
 
 ### Block Formatting Shortcuts
 
-| `=1` | Heading 1    |
-| `=2` | Heading 2    |
-| `=3` | Heading 3    |
-| `=4` | Heading 4    |
-| `=5` | Heading 5    |
-| `=6` | Heading 6    |
-| `-`  | List item    |
-| `<>` | Code         |
-| `~~` | Deleted text |
-| `[1` | Red box      |
-| `[2` | Orange box   |
-| `[3` | Yellow box   |
-| `[4` | Green box    |
-| `[5` | Blue box     |
-| `[6` | Purple box   |
-| `[7` | Pink box     |
-| `[8` | Rainbow box  |
-| `/1` | Red text     |
-| `/2` | Orange text  |
-| `/3` | Yellow text  |
-| `/4` | Green text   |
-| `/5` | Blue text    |
-| `/6` | Purple text  |
-| `/7` | Pink text    |
-| `/8` | Rainbow text |
+| `=1` | Heading 1          |
+| `=2` | Heading 2          |
+| `=3` | Heading 3          |
+| `=4` | Heading 4          |
+| `=5` | Heading 5          |
+| `=6` | Heading 6          |
+| `-`  | List item          |
+| `<>` | Code               |
+| `~~` | Deleted text       |
+| `[1` | Red background     |
+| `[2` | Orange background  |
+| `[3` | Yellow background  |
+| `[4` | Green background   |
+| `[5` | Blue background    |
+| `[6` | Purple background  |
+| `[7` | Pink background    |
+| `[8` | Rainbow background |
+| `/1` | Red text           |
+| `/2` | Orange text        |
+| `/3` | Yellow text        |
+| `/4` | Green text         |
+| `/5` | Blue text          |
+| `/6` | Purple text        |
+| `/7` | Pink text          |
+| `/8` | Rainbow text       |
 
 Reset the block format by hitting `Backspace` at the beginning of the block.
 

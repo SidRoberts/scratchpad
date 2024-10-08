@@ -1,6 +1,5 @@
 @mixin box($colour)
     background-color: $colour
-    color:            $black // for dark mode
     padding:          2rem
 
     @media print
@@ -21,10 +20,10 @@
     // TEXT ////////////////////////////////////////////////////////////////////
 
     @each $word, $colour in $colour-variations
-        #{"text-" + $word}
+        *[data-color=#{$word}]
             color: $colour
 
-    text-rainbow
+    *[data-color=rainbow]
         &, &:after
             background-clip:  text
             background-image: $rainbow-gradient
@@ -34,40 +33,59 @@
     // BOXES ///////////////////////////////////////////////////////////////////
 
     @each $word, $colour in $colour-variations
-        #{"box-" + $word}
+        *[data-bg=#{$word}]
             @include box($colour)
 
-    box-rainbow
-        @include box($red)
-
+    *[data-bg=rainbow]
         background: $rainbow-gradient
+
+        @include box($red)
 
         @media print
             border-image:       $rainbow-gradient 1
             border-image-width: 5px
 
+    // HEADINGS ////////////////////////////////////////////////////////////////
+
+    *[data-size=h1]
+        font-size:   185%
+        font-weight: 700
+
+    *[data-size=h2]
+        font-size:   170%
+        font-weight: 700
+
+    *[data-size=h3]
+        font-size:   155%
+        font-weight: 700
+
+    *[data-size=h4]
+        font-size:   140%
+        font-weight: 700
+
+    *[data-size=h5]
+        font-size:   125%
+        font-weight: 700
+
+    *[data-size=h6]
+        font-size:   110%
+        font-weight: 700
+
     // CODE ////////////////////////////////////////////////////////////////////
 
-    pre
+    *[data-font=monospace]
         font-family:  "Fira Code", monospace
         font-weight:  300
-        margin-block: 1em
-        overflow:     auto
-        white-space:  pre-wrap
 
     // LISTS ///////////////////////////////////////////////////////////////////
 
-    li
-        display:      list-item !important
-        margin-left:  ($spacing-md + 1rem)
-        padding-left: 1rem
+    *[data-style=list]
+        display:             list-item
+        list-style-position: outside
+        margin-left:         5rem
 
     // DELETED TEXT ////////////////////////////////////////////////////////////
 
-    del
-        color:                     $red
-        display:                   block
-        text-decoration-thickness: 5px
-
-        &:empty
-            text-decoration: none
+    *[data-decoration=strikethrough]
+        text-decoration:           line-through
+        text-decoration-thickness: 3px

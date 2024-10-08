@@ -3,62 +3,66 @@
 import Cursor from './cursor.js'
 
 export default class Blocks {
-  static makeNewBlock (newBlockTag) {
-    const newBlock = document.createElement(newBlockTag)
+  static makeNewBlock () {
+    const newBlock = document.createElement('div')
 
     newBlock.contentEditable = 'plaintext-only'
 
     return newBlock
   }
 
-  static replaceBlock (block, newBlockTag) {
-    const newBlock = Blocks.makeNewBlock(newBlockTag)
+  static toggleDataAttribute (block, key, value) {
+    key = 'data-' + key
 
-    newBlock.textContent = block.textContent
-
-    block.parentNode.replaceChild(newBlock, block)
-
-    return newBlock
+    if (block.getAttribute(key) === value) {
+      block.removeAttribute(key)
+    } else {
+      block.setAttribute(key, value)
+    }
   }
 
   static applyBlockFormatter (block) {
     const blockFormatters = {
-      '=1': 'h1',
-      '=2': 'h2',
-      '=3': 'h3',
-      '=4': 'h4',
-      '=5': 'h5',
-      '=6': 'h6',
-      '- ': 'li',
-      '<>': 'pre',
-      '~~': 'del',
-      '[1': 'box-red',
-      '[2': 'box-orange',
-      '[3': 'box-yellow',
-      '[4': 'box-green',
-      '[5': 'box-blue',
-      '[6': 'box-purple',
-      '[7': 'box-pink',
-      '[8': 'box-rainbow',
-      '/1': 'text-red',
-      '/2': 'text-orange',
-      '/3': 'text-yellow',
-      '/4': 'text-green',
-      '/5': 'text-blue',
-      '/6': 'text-purple',
-      '/7': 'text-pink',
-      '/8': 'text-rainbow'
+      '=1': { size: 'h1' },
+      '=2': { size: 'h2' },
+      '=3': { size: 'h3' },
+      '=4': { size: 'h4' },
+      '=5': { size: 'h5' },
+      '=6': { size: 'h6' },
+      '- ': { style: 'list' },
+      '<>': { font: 'monospace' },
+      '~~': { decoration: 'strikethrough' },
+      '[1': { bg: 'red' },
+      '[2': { bg: 'orange' },
+      '[3': { bg: 'yellow' },
+      '[4': { bg: 'green' },
+      '[5': { bg: 'blue' },
+      '[6': { bg: 'purple' },
+      '[7': { bg: 'pink' },
+      '[8': { bg: 'rainbow' },
+      '/1': { color: 'red' },
+      '/2': { color: 'orange' },
+      '/3': { color: 'yellow' },
+      '/4': { color: 'green' },
+      '/5': { color: 'blue' },
+      '/6': { color: 'purple' },
+      '/7': { color: 'pink' },
+      '/8': { color: 'rainbow' }
     }
 
     for (const blockFormatter in blockFormatters) {
-      const newBlockTag = blockFormatters[blockFormatter]
+      const dataAttributes = blockFormatters[blockFormatter]
 
       if (block.textContent.startsWith(blockFormatter)) {
         const cursorPosition = Cursor.getPosition(block)
 
         block.textContent = block.textContent.replace(blockFormatter, '')
 
-        const newBlock = Blocks.replaceBlock(block, newBlockTag)
+        for (const key in dataAttributes) {
+          const value = dataAttributes[key]
+
+          Blocks.toggleDataAttribute(block, key, value)
+        }
 
         if (cursorPosition !== -1) {
           let newPosition = cursorPosition.focus - blockFormatter.length
@@ -67,10 +71,10 @@ export default class Blocks {
             newPosition = 0
           }
 
-          Cursor.setPosition(newBlock, newPosition, newPosition)
+          Cursor.setPosition(block, newPosition, newPosition)
         }
 
-        return newBlock
+        return block
       }
     }
 
