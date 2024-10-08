@@ -32,6 +32,7 @@ export default class Blocks {
       '- ': { style: 'list' },
       '<>': { font: 'monospace' },
       '~~': { decoration: 'strikethrough' },
+      __: { decoration: 'underline' },
       '[1': { bg: 'red' },
       '[2': { bg: 'orange' },
       '[3': { bg: 'yellow' },

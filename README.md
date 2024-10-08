@@ -46,6 +46,7 @@ docker run -p 80:80 sidroberts/scratchpad
 | `-`   | List item          |
 | `<>`  | Code               |
 | `~~`  | Deleted text       |
+| `__`  | Underlined text    |
 | `[1`  | Red background     |
 | `[2`  | Orange background  |
 | `[3`  | Yellow background  |
