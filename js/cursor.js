@@ -23,10 +23,10 @@ export default class Cursor {
     const max = Math.max(base, focus)
 
     return {
-      base: base,
-      focus: focus,
-      min: min,
-      max: max,
+      base,
+      focus,
+      min,
+      max,
       selection: selection.toString()
     }
   }
