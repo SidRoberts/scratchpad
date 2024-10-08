@@ -54,6 +54,14 @@ docker run -p 80:80 sidroberts/scratchpad
 | `[6` | Purple background  |
 | `[7` | Pink background    |
 | `[8` | Rainbow background |
+| `-1` | Red border         |
+| `-2` | Orange border      |
+| `-3` | Yellow border      |
+| `-4` | Green border       |
+| `-5` | Blue border        |
+| `-6` | Purple border      |
+| `-7` | Pink border        |
+| `-8` | Rainbow border     |
 | `/1` | Red text           |
 | `/2` | Orange text        |
 | `/3` | Yellow text        |
