@@ -37,46 +37,46 @@ docker run -p 80:80 sidroberts/scratchpad
 
 ### Block Formatting Shortcuts
 
-| `=1`  | Heading 1          |
-| `=2`  | Heading 2          |
-| `=3`  | Heading 3          |
-| `=4`  | Heading 4          |
-| `=5`  | Heading 5          |
-| `=6`  | Heading 6          |
-| `-`   | List item          |
-| `<>`  | Code               |
-| `~~`  | Deleted text       |
-| `__`  | Underlined text    |
-| `[1`  | Red background     |
-| `[2`  | Orange background  |
-| `[3`  | Yellow background  |
-| `[4`  | Green background   |
-| `[5`  | Blue background    |
-| `[6`  | Purple background  |
-| `[7`  | Pink background    |
-| `[8`  | Black background   |
-| `[9`  | White background   |
-| `[10` | Rainbow background |
-| `-1`  | Red border         |
-| `-2`  | Orange border      |
-| `-3`  | Yellow border      |
-| `-4`  | Green border       |
-| `-5`  | Blue border        |
-| `-6`  | Purple border      |
-| `-7`  | Pink border        |
-| `-8`  | Black border       |
-| `-9`  | White border       |
-| `-10` | Rainbow border     |
-| `/1`  | Red text           |
-| `/2`  | Orange text        |
-| `/3`  | Yellow text        |
-| `/4`  | Green text         |
-| `/5`  | Blue text          |
-| `/6`  | Purple text        |
-| `/7`  | Pink text          |
-| `/8`  | Black text         |
-| `/9`  | White text         |
-| `/10` | Rainbow text       |
+| `=1` | Heading 1          |
+| `=2` | Heading 2          |
+| `=3` | Heading 3          |
+| `=4` | Heading 4          |
+| `=5` | Heading 5          |
+| `=6` | Heading 6          |
+| `-`  | List item          |
+| `<>` | Code               |
+| `~~` | Deleted text       |
+| `__` | Underlined text    |
+| `[1` | Red background     |
+| `[2` | Orange background  |
+| `[3` | Yellow background  |
+| `[4` | Green background   |
+| `[5` | Blue background    |
+| `[6` | Purple background  |
+| `[7` | Pink background    |
+| `[8` | Black background   |
+| `[9` | White background   |
+| `[0` | Rainbow background |
+| `-1` | Red border         |
+| `-2` | Orange border      |
+| `-3` | Yellow border      |
+| `-4` | Green border       |
+| `-5` | Blue border        |
+| `-6` | Purple border      |
+| `-7` | Pink border        |
+| `-8` | Black border       |
+| `-9` | White border       |
+| `-0` | Rainbow border     |
+| `/1` | Red text           |
+| `/2` | Orange text        |
+| `/3` | Yellow text        |
+| `/4` | Green text         |
+| `/5` | Blue text          |
+| `/6` | Purple text        |
+| `/7` | Pink text          |
+| `/8` | Black text         |
+| `/9` | White text         |
+| `/0` | Rainbow text       |
 
 Reset the block format by hitting `Backspace` at the beginning of the block.
 

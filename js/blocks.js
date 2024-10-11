@@ -42,7 +42,7 @@ export default class Blocks {
       '[7': { bg: 'pink' },
       '[8': { bg: 'black' },
       '[9': { bg: 'white' },
-      '[10': { bg: 'rainbow' },
+      '[0': { bg: 'rainbow' },
       '-1': { border: 'red' },
       '-2': { border: 'orange' },
       '-3': { border: 'yellow' },
@@ -52,7 +52,7 @@ export default class Blocks {
       '-7': { border: 'pink' },
       '-8': { border: 'black' },
       '-9': { border: 'white' },
-      '-10': { border: 'rainbow' },
+      '-0': { border: 'rainbow' },
       '/1': { color: 'red' },
       '/2': { color: 'orange' },
       '/3': { color: 'yellow' },
@@ -62,7 +62,7 @@ export default class Blocks {
       '/7': { color: 'pink' },
       '/8': { color: 'black' },
       '/9': { color: 'white' },
-      '/10': { color: 'rainbow' }
+      '/0': { color: 'rainbow' }
     }
 
     for (const blockFormatter in blockFormatters) {
