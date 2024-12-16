@@ -6,7 +6,7 @@
 @import "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
 
 $black:  #1F1F1F
-$white:  #ECEFF4
+$white:  #F4F4F4
 $red:    #E92929
 $orange: #E76B23
 $yellow: #F2D34B
@@ -28,24 +28,21 @@ $rainbow-gradient: linear-gradient(90deg, $red 0%, $orange 17%, $yellow 34%, $gr
 *
     box-sizing: border-box
 
+\:root
+    color-scheme: light dark
+
 html, body
     height: 100%
 
 body
+    background-color:      light-dark($white, $black)
+    color:                 light-dark($black, $white)
     display:               flex
     flex-direction:        column
     margin:                0
     overscroll-behavior-y: none
     padding:               0
     width:                 100%
-
-    @media screen
-        background-color: $white
-
-    &.dark-mode
-        @media screen
-            background-color: $black
-            color:            $white
 
     & > header, & > main
         padding: 0 $spacing-md

@@ -16,10 +16,6 @@ export default class State {
       )
     }
 
-    if (window.localStorage.getItem('darkMode')) {
-      $('body').addClass('dark-mode')
-    }
-
     $('#content').css(
       'column-count',
       window.localStorage.getItem('columnCount')
@@ -37,15 +33,6 @@ export default class State {
       'textAlign',
       $('body').attr('class')
     )
-
-    window.localStorage.removeItem('darkMode')
-
-    if ($('body').hasClass('dark-mode')) {
-      window.localStorage.setItem(
-        'darkMode',
-        true
-      )
-    }
 
     window.localStorage.setItem(
       'fontSize',
@@ -66,7 +53,6 @@ export default class State {
   static reset () {
     window.localStorage.removeItem('fontSize')
     window.localStorage.removeItem('textAlign')
-    window.localStorage.removeItem('darkMode')
     window.localStorage.removeItem('columnCount')
     window.localStorage.removeItem('content')
 

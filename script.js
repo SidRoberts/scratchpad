@@ -56,12 +56,6 @@ const iterateColumnCount = function () {
   State.save()
 }
 
-const toggleDarkMode = function () {
-  $('body').toggleClass('dark-mode')
-
-  State.save()
-}
-
 $('.align-button').on(
   'click',
   function () {
@@ -95,13 +89,6 @@ $('#fullscreen').on(
     } else {
       document.body.parentElement.requestFullscreen()
     }
-  }
-)
-
-$('#darkMode').on(
-  'click',
-  function () {
-    toggleDarkMode()
   }
 )
 
