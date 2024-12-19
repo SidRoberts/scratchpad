@@ -40,6 +40,11 @@ export default class State {
     )
 
     window.localStorage.setItem(
+      'wordSpacing',
+      $('#content').css('word-spacing')
+    )
+
+    window.localStorage.setItem(
       'columnCount',
       $('#content').css('column-count')
     )
@@ -53,6 +58,7 @@ export default class State {
   static reset () {
     window.localStorage.removeItem('fontSize')
     window.localStorage.removeItem('textAlign')
+    window.localStorage.removeItem('wordSpacing')
     window.localStorage.removeItem('columnCount')
     window.localStorage.removeItem('content')
 
