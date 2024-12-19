@@ -40,6 +40,20 @@ const incrementFontSize = function (increment) {
   State.save()
 }
 
+const toggleWordSpacing = function () {
+  // jQuery intentionally not used as it converts rem units to pixels.
+
+  const currentWordSpacing = document.querySelector('#content').style.wordSpacing
+
+  if (currentWordSpacing === '2rem') {
+    document.querySelector('#content').style.wordSpacing = ''
+  } else {
+    document.querySelector('#content').style.wordSpacing = '2rem'
+  }
+
+  State.save()
+}
+
 const iterateColumnCount = function () {
   let columnCount = parseInt(
     $('#content').css('column-count')
@@ -71,6 +85,13 @@ $('.size-button').on(
     const increment = parseInt($(this).data('increment'))
 
     incrementFontSize(increment)
+  }
+)
+
+$('#wordSpacing').on(
+  'click',
+  function () {
+    toggleWordSpacing()
   }
 )
 
