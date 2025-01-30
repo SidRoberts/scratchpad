@@ -12,6 +12,34 @@ $(document).ready(
   }
 )
 
+document.addEventListener(
+  'paste',
+  function (event) {
+    event.preventDefault()
+
+    if (!event.clipboardData) {
+      return
+    }
+
+    const text = event.clipboardData.getData('text/plain')
+
+    const selection = document.getSelection()
+
+    if (!selection) {
+      return
+    }
+
+    const range = selection.getRangeAt(0)
+
+    range.deleteContents()
+    range.insertNode(document.createTextNode(text))
+    range.collapse()
+
+    selection.removeAllRanges()
+    selection.addRange(range)
+  }
+)
+
 $('#content').on('keyup cut paste', State.save)
 
 const changeAlignment = function (newAlign) {

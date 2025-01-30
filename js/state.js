@@ -29,7 +29,7 @@ export default class State {
     )
 
     $('#content').html(
-      window.localStorage.getItem('content') || '<div contenteditable="plaintext-only"></div>'
+      window.localStorage.getItem('content') || '<div contenteditable></div>'
     )
 
     Blocks.focusOnLastBlock()

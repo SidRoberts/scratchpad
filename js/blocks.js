@@ -6,7 +6,7 @@ export default class Blocks {
   static makeNewBlock () {
     const newBlock = document.createElement('div')
 
-    newBlock.contentEditable = 'plaintext-only'
+    newBlock.contentEditable = true
 
     return newBlock
   }
