@@ -379,7 +379,7 @@ hotkeys(
       return true
     }
 
-    if (cursorPosition.base !== cursorPosition.focus) {
+    if (cursorPosition.anchor !== cursorPosition.focus) {
       return true
     }
 
@@ -435,7 +435,7 @@ hotkeys(
       return true
     }
 
-    if (cursorPosition.base !== cursorPosition.focus) {
+    if (cursorPosition.anchor !== cursorPosition.focus) {
       return true
     }
 

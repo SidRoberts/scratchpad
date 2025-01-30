@@ -16,14 +16,14 @@ export default class Cursor {
 
     const charactersBeforeFocusNodeCount = Cursor._charactersBeforeFocusNodeCount(parentNode, node)
 
-    const base = charactersBeforeFocusNodeCount + selection.baseOffset
+    const anchor = charactersBeforeFocusNodeCount + selection.anchorOffset
     const focus = charactersBeforeFocusNodeCount + selection.focusOffset
 
-    const min = Math.min(base, focus)
-    const max = Math.max(base, focus)
+    const min = Math.min(anchor, focus)
+    const max = Math.max(anchor, focus)
 
     return {
-      base,
+      anchor,
       focus,
       min,
       max,
@@ -31,9 +31,9 @@ export default class Cursor {
     }
   }
 
-  static setPosition (parentNode, baseOffset, focusOffset) {
-    if (baseOffset < 0) {
-      baseOffset += parentNode.textContent.length + 1
+  static setPosition (parentNode, anchorOffset, focusOffset) {
+    if (anchorOffset < 0) {
+      anchorOffset += parentNode.textContent.length + 1
     }
     if (focusOffset < 0) {
       focusOffset += parentNode.textContent.length + 1
@@ -42,23 +42,23 @@ export default class Cursor {
     const selection = window.getSelection()
 
     // An empty parent will have no text nodes. :(
-    if (parentNode.textContent.length === 0 && baseOffset === 0 && focusOffset === 0) {
+    if (parentNode.textContent.length === 0 && anchorOffset === 0 && focusOffset === 0) {
       parentNode.focus()
       selection.setBaseAndExtent(parentNode, 0, parentNode, 0)
     }
 
-    const baseNode = Cursor._getTextNodeAtOffset(parentNode, baseOffset)
+    const anchorNode = Cursor._getTextNodeAtOffset(parentNode, anchorOffset)
     const focusNode = Cursor._getTextNodeAtOffset(parentNode, focusOffset)
 
-    if (!baseNode || !focusNode) {
+    if (!anchorNode || !focusNode) {
       return
     }
 
-    baseOffset -= Cursor._charactersBeforeFocusNodeCount(parentNode, baseNode)
+    anchorOffset -= Cursor._charactersBeforeFocusNodeCount(parentNode, anchorNode)
     focusOffset -= Cursor._charactersBeforeFocusNodeCount(parentNode, focusNode)
 
     focusNode.parentElement.focus()
-    selection.setBaseAndExtent(baseNode, baseOffset, focusNode, focusOffset)
+    selection.setBaseAndExtent(anchorNode, anchorOffset, focusNode, focusOffset)
   }
 
   static _getTextNodeAtOffset (node, offset) {
