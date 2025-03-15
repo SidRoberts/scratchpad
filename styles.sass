@@ -15,8 +15,6 @@ $blue:   #049DD9
 $purple: #873ACF
 $pink:   #E58CFC
 
-$page-width: 75rem
-
 $spacing-sm: 1rem
 $spacing-md: 2rem
 $spacing-lg: 4rem
@@ -46,10 +44,6 @@ body
 
     & > header, & > main
         padding: 0 $spacing-md
-
-        @media (min-width: $page-width)
-            display:               grid
-            grid-template-columns: 1fr [content-start] ($page-width - $spacing-md - $spacing-md) [content-end] 1fr
 
         @media print
             background:    none
