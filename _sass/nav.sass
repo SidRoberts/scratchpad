@@ -1,5 +1,5 @@
 body > header
-    background-color: $purple
+    padding: $spacing-xs
 
     @media print
         display: none
@@ -16,8 +16,10 @@ body > header
             flex-grow: 1
 
         .button-group
-            display:      flex
-            margin-right: 2rem
+            border-radius: $border-radius
+            display:       flex
+            margin-right:  2rem
+            overflow:      hidden
 
             &:last-child
                 margin-right: 0
@@ -25,7 +27,7 @@ body > header
         button, a
             background: none
             border:     none
-            color:      $white
+            color:      inherit
             cursor:     pointer
             display:    inline-block
             font-size:  1rem
@@ -34,3 +36,4 @@ body > header
 
             &:focus, &:hover, &:active
                 background-color: $red
+                color:            $white
