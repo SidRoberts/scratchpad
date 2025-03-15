@@ -6,11 +6,13 @@ body > header
 
     nav
         display: flex
+        gap:     $spacing-md
 
         .nav-start, .nav-end
             display:        flex
             flex-direction: row
             flex-wrap:      wrap
+            gap:            $spacing-md
 
         .nav-start
             flex-grow: 1
@@ -18,7 +20,6 @@ body > header
         .button-group
             border-radius: $border-radius
             display:       flex
-            margin-right:  2rem
             overflow:      hidden
 
             &:last-child
